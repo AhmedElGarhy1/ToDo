@@ -1,136 +1,131 @@
 body {
   margin: 0;
+  font-family: sans-serif;
+}
+.container {
+  width: fit-content;
+  margin: 10px auto;
+  transition: 0.5s;
+}
+.todo-list {
+  display: grid;
+  transition: 0.5s;
+}
+@media (max-width: 799px) {
+  .todo-list {
+    grid-template-columns: repeat(1, 400px);
+  }
+}
+@media (min-width: 800px) {
+  .todo-list {
+    grid-template-columns: repeat(2, 400px);
+  }
+}
+@media (min-width: 1200px) {
+  .todo-list {
+    grid-template-columns: repeat(3, 400px);
+  }
+}
+@media (min-width: 1600px) {
+  .todo-list {
+    grid-template-columns: repeat(4, 400px);
+  }
 }
 
-h1 {
-  padding-left: 15px;
+.todo-card {
+  background-color: #fcf1f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 220px;
+  text-align: center;
+  border-radius: 10px;
+  text-transform: capitalize;
+  margin: 20px;
+  box-shadow: 0px 1px 7px #e2d3d3;
+  transition: 0.5s;
 }
-.btn,
-button {
-  background-color: #fa5be581;
-  color: #fff;
+.todo-card h2 {
+  font-size: 25px;
+  margin: 0;
+}
+.todo-card span {
+  font-size: 18px;
   font-weight: bold;
-  border: 0;
-  padding: 0.8rem;
-  border-radius: 0.8rem;
+  margin: 0;
+}
 
+.todo-card button {
+  width: fit-content;
+  margin: 8px auto;
+}
+
+button {
+  margin: 5px 10px;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.08);
   transition: 0.3s;
 }
-.btn {
-  background-color: #f135bd;
-  cursor: pointer;
+.complete {
+  border-color: #048d03;
+  background-color: #2cc131;
 }
-.btn:hover {
-  transform: scale(1.1);
+.delete {
+  border-color: #274227;
+  background-color: #a44040;
 }
-/* --------------------------------- */
-.navbar {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  max-width: 100%;
+
+.current input {
+  padding: 10px 8px;
+  border-radius: 10px;
+  margin: 0 10px;
+  border: 2px solid #977aff5e;
+  text-align: center;
+}
+.current input:first-child {
+  font-size: 18px;
+}
+.current input:first-child::placeholder {
+  font-size: 18px;
+  color: #977aff5e;
+}
+.current input:first-child:focus {
+  border: 2px solid #ffa52d;
+  outline: none;
+}
+.current input:nth-child(2) {
+  width: fit-content;
   margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
 }
-
-.navbar h1 {
-  color: #f1356d;
+.current button {
+  background-color: #977aff5e;
+  margin: 0 auto 10px;
+  border-color: #997ce9;
 }
-
-.navbar .links {
-  margin-left: auto;
+.current button:hover {
+  background-color: #977aff;
 }
-
-.navbar a {
-  margin: 1rem;
-  text-decoration: none;
-  color: #f331fa;
-  font-weight: bold;
-  padding: 6px;
-}
-.navbar a:hover {
-  color: #f1356d;
-}
-
-.content {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-/* blogs style */
-
-.blog-preview {
-  padding: 0.8rem 1rem;
-  margin: 1.5rem 0;
-  border-bottom: 1px solid #f1f1f1;
-  cursor: pointer;
-}
-.blog-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
-}
-
-.blog-preview h2 {
-  font-size: 20px;
-  color: #f1356d;
-  margin-bottom: 0.5rem;
-}
-.blog-preview p {
-  color: #777;
-}
-a {
-  text-decoration: none;
-}
-
-/* blog detailss styles */
-.blog-details {
-  text-align: center;
-}
-.blog-details span {
-  font-size: 20px;
-  color: #f331fa;
-  font-weight: bold;
-}
-.blog-details h2 {
-  font-size: 1.5rem;
-  color: #f1356d;
-  margin-bottom: 0.8rem;
-}
-
-.blog-details div {
-  margin: 1.5rem 0;
-}
-
-/* add new blog from style */
-.create {
-  max-width: 25rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.create label {
-  text-align: left;
-  display: block;
-  margin-left: 13px;
-}
-
-.create h2 {
-  font-size: 1.5rem;
-  color: #f1356d;
-  margin-bottom: 1.9rem;
-}
-
-.create input,
-textarea,
-select {
-  width: 100%;
-  padding: 0.4rem 0.7rem;
-  margin: 0.7rem;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-  display: block;
-}
-
-.not-found {
-  text-align: center;
+.todo-card.true {
+  opacity: 0.6;
+  box-shadow: 0px 0px 15px 1px #ffa52d;
+  background-image: linear-gradient(
+    to bottom,
+    #8296f2,
+    #a8aef5,
+    #c9c8f8,
+    #e5e3fb,
+    #ffffff
+  );
 }

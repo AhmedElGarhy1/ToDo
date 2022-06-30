@@ -1,25 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NavBar from "./NavBar";
-import Home from "./Home";
-import Create from "./Create";
-import BlogDetails from "./BlogDetails";
-import NotFound from "./NotFound";
+// import newToDo from "./ToDo";
+import { useEffect, useState } from "react";
+import ToDo from "./ToDo";
 
 function App() {
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    const temp = JSON.parse(window.localStorage.getItem("todoList"));
+    if (temp) {
+      setList(temp);
+    }
+  }, []);
+
   return (
-    <BrowserRouter>
-      <div className="App">
-        <NavBar />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/blogs/:id" element={<BlogDetails />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <ToDo setList={setList} list={list} />
+    </div>
   );
 }
 
